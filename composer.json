@@ -1,5 +1,5 @@
 {
-    "name": "rtablada/wardrobe-disqus",
+    "name": "cviebrock/wardrobe-disqus",
     "description": "Fast, simple Disqus integration for Laravel",
     "keywords": [
         "laravel",
