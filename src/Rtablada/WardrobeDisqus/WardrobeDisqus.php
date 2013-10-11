@@ -1,7 +1,6 @@
 <?php namespace Rtablada\WardrobeDisqus;
 
 use Illuminate\Config\Repository as Config;
-use Wardrobe\Core\Models\Post as Post;
 
 class WardrobeDisqus
 {
@@ -12,20 +11,20 @@ class WardrobeDisqus
 		$this->config = $config;
 	}
 
-	public function comments(Post $post)
+	public function comments($id=null)
 	{
 		$disqus_shortname = $this->config->get('wardrobe-disqus::disqus_shortname');
 
-		$disqus_identifier = $this->config->get('wardrobe-disqus::disqus_use_identifier') ? $post->getKey() : false;
+		$disqus_identifier = $id ?: false;
 
 		return View::make('wardrobe-disqus::comments', compact($disqus_shortname, $disqus_identifier) );
 	}
 
-	public function counts(Post $post)
+	public function counts($id=null)
 	{
 		$disqus_shortname = $this->config->get('wardrobe-disqus::disqus_shortname');
 
-		$disqus_identifier = $this->config->get('wardrobe-disqus::disqus_use_identifier') ? $post->getKey() : false;
+		$disqus_identifier = $id ?: false;
 
 		return View::make('wardrobe-disqus::counts', compact($disqus_shortname, $disqus_identifier) );
 	}

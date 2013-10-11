@@ -4,9 +4,6 @@
 @if( $disqus_identifier )
 	var disqus_identifier = '{{ $disqus_identifier }}';
 @endif
-@if( $disqus_url )
-	var disqus_url = '{{ $disqus_url }}';
-@endif
 	(function(d) {
 		var dsq = d.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
