@@ -40,3 +40,32 @@ In Wardrobe CMS it is best to place this in individual pages, or within your the
   </section>
 @stop
 ```
+
+Disqus ties comment threads to the URL of the page they are on.  If you would rather use a unique identifier for each post, then pass that value as an argument, e.g.:
+
+```
+{{ Disqus::comments($post->getKey()) }}
+```
+
+This will ensure that if the URL for your post changes, the comments associated with it will remain.
+
+## Adding Comment Counts
+
+Disqus also allows you to show the number of comments associated with a given link.  To do this, you might change your `inc/post.blade.php` file to look like this:
+
+```html
+<div class="post">
+  <h1><a href="{{ wardrobe_url('post/'.$post->slug) }}">{{ $post->title }}</a></h1>
+  <div class="date">{{ date("M/d/Y", strtotime($post->publish_date)) }}</div>
+  <div class="content">
+    {{ $post->parsed_content }}
+  </div>
+	<a href="{{ wardrobe_url('post/'.$post->slug) }}#disqus_thread" data-disqus-identifier="{{ $post->getKey() }}">
+		Read More &raquo;
+	</a>
+</div>
+```
+
+You will also need to add `Discuss::counts()` to the bottom of your `layout.blade.php` template, right before the closing `</body>` tag.  This will add the necessary Javascript to handle comment counts.
+
+For more details, see <http://help.disqus.com/customer/portal/articles/565624-tightening-your-disqus-integration>.
