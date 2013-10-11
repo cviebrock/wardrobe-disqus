@@ -17,7 +17,7 @@ class WardrobeDisqus
 
 		$disqus_identifier = $id ?: false;
 
-		return View::make('wardrobe-disqus::comments', compact($disqus_shortname, $disqus_identifier) );
+		return \View::make('wardrobe-disqus::comments', compact($disqus_shortname, $disqus_identifier) );
 	}
 
 	public function counts($id=null)
@@ -26,6 +26,6 @@ class WardrobeDisqus
 
 		$disqus_identifier = $id ?: false;
 
-		return View::make('wardrobe-disqus::counts', compact($disqus_shortname, $disqus_identifier) );
+		return \View::make('wardrobe-disqus::counts', compact($disqus_shortname, $disqus_identifier) );
 	}
 }
