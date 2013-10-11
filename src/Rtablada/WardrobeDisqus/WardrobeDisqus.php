@@ -11,21 +11,17 @@ class WardrobeDisqus
 		$this->config = $config;
 	}
 
-	public function comments($id=null)
+	public function comments($disqus_identifier=null)
 	{
 		$disqus_shortname = $this->config->get('wardrobe-disqus::disqus_shortname');
 
-		$disqus_identifier = $id ?: false;
-
-		return \View::make('wardrobe-disqus::comments', compact($disqus_shortname, $disqus_identifier) );
+		return \View::make('wardrobe-disqus::comments', compact('disqus_shortname', 'disqus_identifier') );
 	}
 
-	public function counts($id=null)
+	public function counts()
 	{
 		$disqus_shortname = $this->config->get('wardrobe-disqus::disqus_shortname');
 
-		$disqus_identifier = $id ?: false;
-
-		return \View::make('wardrobe-disqus::counts', compact($disqus_shortname, $disqus_identifier) );
+		return \View::make('wardrobe-disqus::counts', compact('disqus_shortname') );
 	}
 }
